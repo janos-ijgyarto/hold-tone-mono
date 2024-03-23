@@ -1,0 +1,37 @@
+[gd_scene load_steps=9 format=3 uid="uid://bk2sj6igcy0vo"]
+
+[ext_resource type="Script" path="res://scripts/world/entity/npc/NPC.cs" id="1_ega7g"]
+[ext_resource type="PackedScene" uid="uid://omy4n4y3kbyr" path="res://scenes/prefabs/world/entity/component_list.tscn" id="1_kwmqe"]
+[ext_resource type="Script" path="res://scripts/world/entity/npc/NPCController.cs" id="2_7y1o8"]
+[ext_resource type="PackedScene" uid="uid://bee00mdabwsit" path="res://scenes/prefabs/world/ai/behavior_tree.tscn" id="3_xuvvj"]
+[ext_resource type="PackedScene" uid="uid://c7ni3of8asa6j" path="res://scenes/prefabs/world/entity/npc/ai/behavior.tscn" id="5_6jkto"]
+
+[sub_resource type="Gradient" id="Gradient_gxg3p"]
+colors = PackedColorArray(1, 0, 0, 1, 1, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_cmn5c"]
+gradient = SubResource("Gradient_gxg3p")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o34xt"]
+size = Vector2(64, 64)
+
+[node name="NPC" type="Node2D"]
+script = ExtResource("1_ega7g")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 0.785398
+texture = SubResource("GradientTexture2D_cmn5c")
+
+[node name="Hitbox" type="Area2D" parent="."]
+rotation = 0.785398
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("RectangleShape2D_o34xt")
+
+[node name="Components" parent="." instance=ExtResource("1_kwmqe")]
+
+[node name="Controller" type="Node" parent="Components"]
+script = ExtResource("2_7y1o8")
+
+[node name="BehaviorTree" parent="Components" instance=ExtResource("3_xuvvj")]
+_rootPrefab = ExtResource("5_6jkto")

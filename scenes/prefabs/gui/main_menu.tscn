@@ -1,0 +1,37 @@
+[gd_scene load_steps=2 format=3 uid="uid://c1ox2rad6shu8"]
+
+[ext_resource type="Script" path="res://scripts/gui/MainMenu.cs" id="1_uk140"]
+
+[node name="MainMenu" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_uk140")
+
+[node name="MainVBox" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 150
+
+[node name="Title" type="Label" parent="MainVBox"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 64
+text = "HOLD TONE"
+
+[node name="ButtonVBox" type="VBoxContainer" parent="MainVBox"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 50
+
+[node name="StartButton" type="Button" parent="MainVBox/ButtonVBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "Start Game"
+
+[node name="QuitButton" type="Button" parent="MainVBox/ButtonVBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "Quit"

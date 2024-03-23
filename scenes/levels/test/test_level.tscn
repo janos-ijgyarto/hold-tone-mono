@@ -1,0 +1,21 @@
+[gd_scene load_steps=6 format=3 uid="uid://8rm6a3igolse"]
+
+[ext_resource type="PackedScene" uid="uid://bvxlnpdhko46x" path="res://scenes/prefabs/world/level.tscn" id="1_htk83"]
+[ext_resource type="PackedScene" uid="uid://ddnqmcd2bw70y" path="res://scenes/levels/test/test_player.tscn" id="2_w3y13"]
+[ext_resource type="PackedScene" uid="uid://cpb5p3lodfm6e" path="res://scenes/levels/test/test_npc.tscn" id="3_krybb"]
+
+[sub_resource type="Gradient" id="Gradient_3673o"]
+colors = PackedColorArray(0, 1, 1, 1, 0, 1, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_7fkt4"]
+gradient = SubResource("Gradient_3673o")
+width = 512
+height = 512
+fill_from = Vector2(0, 1)
+
+[node name="Level" instance=ExtResource("1_htk83")]
+_playerPrefab = ExtResource("2_w3y13")
+_npcPrefab = ExtResource("3_krybb")
+
+[node name="Terrain" parent="." index="0"]
+texture = SubResource("GradientTexture2D_7fkt4")

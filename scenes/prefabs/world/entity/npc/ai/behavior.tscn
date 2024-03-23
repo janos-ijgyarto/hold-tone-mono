@@ -1,0 +1,38 @@
+[gd_scene load_steps=8 format=3 uid="uid://c7ni3of8asa6j"]
+
+[ext_resource type="Script" path="res://scripts/world/entity/npc/ai/IsInRange.cs" id="1_4la35"]
+[ext_resource type="Script" path="res://scripts/world/ai/behavior/node/decorator/RepeatUntil.cs" id="1_4q42r"]
+[ext_resource type="Script" path="res://scripts/world/ai/behavior/node/composite/selector/ActiveSelector.cs" id="1_rl312"]
+[ext_resource type="Script" path="res://scripts/world/entity/npc/ai/MoveTo.cs" id="2_obfl8"]
+[ext_resource type="Script" path="res://scripts/world/ai/behavior/node/composite/Parallel.cs" id="2_vwsw2"]
+[ext_resource type="Script" path="res://scripts/world/entity/npc/ai/PickRandomDestination.cs" id="6_6khqo"]
+[ext_resource type="Script" path="res://scripts/world/ai/behavior/node/composite/Sequence.cs" id="6_jip00"]
+
+[node name="Root" type="Node"]
+script = ExtResource("1_rl312")
+
+[node name="Approach" type="Node" parent="."]
+script = ExtResource("2_vwsw2")
+
+[node name="RepeatUntil" type="Node" parent="Approach"]
+script = ExtResource("1_4q42r")
+
+[node name="IsPlayerInRange" type="Node" parent="Approach/RepeatUntil"]
+script = ExtResource("1_4la35")
+_range = 100.0
+_targetKey = "player"
+
+[node name="MoveTo" type="Node" parent="Approach"]
+script = ExtResource("2_obfl8")
+_destinationKey = "player"
+
+[node name="Patrol" type="Node" parent="."]
+script = ExtResource("6_jip00")
+
+[node name="PickRandomDestination" type="Node" parent="Patrol"]
+script = ExtResource("6_6khqo")
+_destinationKey = "patrol_to"
+
+[node name="MoveTo" type="Node" parent="Patrol"]
+script = ExtResource("2_obfl8")
+_destinationKey = "patrol_to"

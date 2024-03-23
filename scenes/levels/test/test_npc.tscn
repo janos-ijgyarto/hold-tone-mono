@@ -1,0 +1,11 @@
+[gd_scene load_steps=4 format=3 uid="uid://cpb5p3lodfm6e"]
+
+[ext_resource type="PackedScene" uid="uid://bk2sj6igcy0vo" path="res://scenes/prefabs/world/entity/npc/npc.tscn" id="1_plsti"]
+[ext_resource type="Script" path="res://scripts/world/entity/npc/NPCConfig.cs" id="2_gcwh5"]
+
+[sub_resource type="Resource" id="Resource_mk761"]
+script = ExtResource("2_gcwh5")
+speed = 50.0
+
+[node name="NPC" instance=ExtResource("1_plsti")]
+_config = SubResource("Resource_mk761")

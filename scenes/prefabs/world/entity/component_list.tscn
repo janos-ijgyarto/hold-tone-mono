@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://omy4n4y3kbyr"]
+
+[ext_resource type="Script" path="res://scripts/world/entity/ComponentList.cs" id="1_c4e8b"]
+
+[node name="Components" type="Node"]
+script = ExtResource("1_c4e8b")
